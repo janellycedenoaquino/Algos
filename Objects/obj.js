@@ -4,7 +4,8 @@
 //let newObj =  Object.create(prototype you want to pass in )
 //  Object.keys();
 //  Object.values();
-//  Object.entries()
+//  Object.entries();
+//  Object.hasOwnProperty(nameOfPropertyHere);
 
 
 console.clear();
