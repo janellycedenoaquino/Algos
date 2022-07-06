@@ -51,18 +51,19 @@ RETURN 0 IF NO SUCH SUBARRAY EXISTS
 /* STRUCTURE OF ALGORITHM */
 
 function Structure_of_Sliding_Window(K, array) {
-  const result = []; // other examples maxSum = -infinity, minimumLength = -infinity, smallestNum = infinity etc...
-  let windowSum = 0;
-  let windowStart = 0;
+  const maxSum = -Infinity; // other examples result = [], maxSum = -infinity, minimumLength = -infinity, smallestNum = infinity etc...
+  let windowSum = 0; //used to calculate the sum or used as a way to keep track of current subarray
+  let windowStart = 0; //the first index of the subarray
 
   for (windowEnd = 0; windowEnd < array.length; windowEnd++) {
-    windowSum += arr[windowEnd];
+    windowSum += arr[windowEnd]; // adding new item until we reach k limit
 
     if (windowEnd >= K - 1) {
+      // if we reach a number <= k we will reach this condition delete the first item and calculate the next
       maxSum = Math.max(maxSum, windowSum);
       windowSum -= arr[windowStart];
       windowStart += 1;
     }
   }
-  return maxSum;
+  return maxSum; // when we reach here it'll mean our
 }
