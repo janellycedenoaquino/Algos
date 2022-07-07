@@ -2,27 +2,29 @@
 
 Given a string find the length of the longest substring in it with no more than K distinct charcters.
 
-we are expecting as input an array and a number K 
-assume k is positive and the array is a valid array with a list of valid numbers both negative and positive 
+assume input will always be string
+
+ex: "araaci", K=2
+
+EXPECTED ANSWER: 4
+
+explanation: substring with no more than 2 different characters is "araa".
 
 
-ex: [2, 1, 5, 2, 3, 2], S=7
+
+ex2: "araaci",  K=1
 
 EXPECTED ANSWER: 2
 
-explanation: subarray with maximum sum greater than or equal to 7 is [5, 2]
+explanation: substring with no more than 2 different characters is "aa".
 
-ex2: [2, 1, 5, 2, 8], S=7
 
-EXPECTED ANSWER: 1
 
-explanation: subarray with maximum sum greater than or equal to 7 is [8]
+ex3:  "cbbebi",  K=3
 
-ex3: [3, 4, 1, 1, 6], S=8
+EXPECTED ANSWER: 5
 
-EXPECTED ANSWER: 3
-
-explanation: subarray with maximum sum greater than or equal to 8 is [3, 4, 1] OR [1, 1, 6]
+explanation:   substring with no more than 2 different characters is "cbbeb" & "bbebi".
 
 */
 // Using brute-force
@@ -43,28 +45,36 @@ explanation: subarray with maximum sum greater than or equal to 8 is [3, 4, 1] O
 //outside that inner loop we need an if condition to check if the smallest value is still that initial value we had if so return 0 this means we didn't find anything that equaled or was larger than S
 //outside the loop we return the sum which if broke out the loop means it is the largest we were able to find
 
-//[2, 3, 4, 1, 5], K=2
-const smallest_subarray_with_given_su = (array, S) => {
-    let minimumLength = Infinity;
-    let currentSum = 0;
-    let windowStart = 0;
-  
-    for (let windowEnd = 0; windowEnd <= array.length - 1; windowEnd++) {
-      currentSum += array[windowEnd];
-  
-      while (currentSum >= S) {
-        minimumLength = Math.min(minimumLength, windowEnd - windowStart + 1);
-        currentSum -= array[windowStart];
-        windowStart += 1;
+const longest_substring_with_k_distinct = (str, k) => {
+  let charFrequency = {};
+  let maxLength = 0;
+  let windowStart = 0;
+
+  for (let windowEnd = 0; windowEnd <= str.length - 1; windowEnd++) {
+    const currChar = str[windowEnd];
+
+    if (!currChar in charFrequency) {
+      charFrequency[currChar] = 0;
+    }
+
+    charFrequency[currChar] += 1;
+
+    while (Object.keys(charFrequency).length > k) {
+      const frontChar = str[windowStart];
+
+      charFrequency[frontChar] -= 1;
+      if (charFrequency[frontChar] === 0) {
+        delete charFrequency[frontChar];
       }
+      windowStart += 1;
     }
-  
-    console.log("minimum Length : ", minimumLength);
-    if (minimumLength === Infinity) {
-      return 0;
-    }
-    return minimumLength;
-  };
-  
-  smallest_subarray_with_given_sum([2, 1, 5, 2, 3, 2], 7);
-  smallest_subarray_with_given_sum([2, 1, 5, 2, 8], 7);
+    console.log("maxLength ", maxLength);
+    maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+  }
+
+  console.log("maxLength: ", maxLength);
+  return maxLength;
+};
+
+longest_substring_with_k_distinct("araaci", 2);
+longest_substring_with_k_distinct("araaci", 1);
