@@ -53,7 +53,7 @@ const longest_substring_with_k_distinct = (str, k) => {
   for (let windowEnd = 0; windowEnd <= str.length - 1; windowEnd++) {
     const currChar = str[windowEnd];
 
-    if (!currChar in charFrequency) {
+    if (!(currChar in charFrequency)) {
       charFrequency[currChar] = 0;
     }
 
@@ -68,7 +68,6 @@ const longest_substring_with_k_distinct = (str, k) => {
       }
       windowStart += 1;
     }
-    console.log("maxLength ", maxLength);
     maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
   }
 
