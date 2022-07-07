@@ -51,7 +51,7 @@ RETURN 0 IF NO SUCH SUBARRAY EXISTS
 /* STRUCTURE OF ALGORITHM */
 
 function Structure_of_Sliding_Window(K, array) {
-  const maxSum = -Infinity; // other examples result = [], maxSum = -infinity, minimumLength = -infinity, smallestNum = infinity etc...
+  let maxSum = -Infinity; // other examples result = [], maxSum = -infinity, minimumLength = -infinity, smallestNum = infinity etc...
   let windowSum = 0; //used to calculate the sum or used as a way to keep track of current subarray
   let windowStart = 0; //the first index of the subarray
 
