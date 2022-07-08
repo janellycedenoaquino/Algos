@@ -15,6 +15,7 @@ QUESTION VARIANT:
 
 
 EXAMPLE QUESTIONS:
+-   Given an array of sorted and a target sum find a pair in the array whose sum is equal to the given target
 
 Remove Duplicates from Sorted Array
 Two Sum II - Input array is sorted
@@ -28,6 +29,15 @@ Product of Array Except Self
 */
 
 /* STRUCTURE OF ALGORITHM */
+
+// Using Two Pointer Technique
+// NOT ALWAYS THE CASE but need a variable to store found values
+// a start variable initialized at the beginning of the given array / list
+// an end variable initialized to be the last index of the array / list
+// a while loop where the start can't be larger than the end if so terminate
+// inside the while loop if conditions that increment the start value if we are at a value smaller than our target value
+// an if conditions that decrements the end value if we are at a value larger than our target value
+// a condition that returns if we found our target unless need all occurences if so this condition will be to store the values found and we will return outside the loop
 
 function Structure_of_Two_Pointer(array, k) {
   let occurances = []; // other examples: sum = 0,  or may no be needed at all...
