@@ -22,9 +22,8 @@ ex: [1, 3, 2, 6, -1, 4, 1, 8, 2], K=5
 EXPECTED ANSWER: [2.2, 2.8, 2.4, 3.6, 2.8] 
 
 */
-// Using brute-force
 
-//code
+/* Brute force/
 
 // Using Sliding Window Technique
 //we need
@@ -80,9 +79,6 @@ EXPECTED ANSWER: 7
 explanation: subarray with maximum sum is [3, 4]
 
 */
-// Using brute-force
-
-//code
 
 // Using Sliding Window Technique
 //we need
@@ -147,9 +143,8 @@ EXPECTED ANSWER: 3
 explanation: subarray with maximum sum greater than or equal to 8 is [3, 4, 1] OR [1, 1, 6]
 
 */
-// Using brute-force
 
-//code
+/* Brute force*/
 
 // Using Sliding Window Technique
 //we need
@@ -190,4 +185,3 @@ const smallest_subarray_with_given_sum = (array, S) => {
 
 // smallest_subarray_with_given_sum([2, 1, 5, 2, 3, 2], 7);
 // smallest_subarray_with_given_sum([2, 1, 5, 2, 8], 7);
-

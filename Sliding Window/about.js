@@ -49,9 +49,21 @@ RETURN 0 IF NO SUCH SUBARRAY EXISTS
 */
 
 /* STRUCTURE OF ALGORITHM */
+// Using Sliding Window Technique
+//we need
+// a way of storing the sum we are calculating... expected answer needs to be in a number
+// a window sum where we will be storing the sum of the iteration of k elements
+// a window start that points to the front of the current window
+// a window end that points to the end of the current window
+// a loop that can iterate through array while saving the sum of each subarray
+// we need a condition that checks we have the amount of elements needed to make a sub array
+// inside the condition we need to calculate and store the current sum if larger than the previous calculated
+// we need to subtract the first value of the current subarray
+// we need to change the index window start is in order to move to a different subarray
+//outside the loop we return the sum which if broke out the loop means it is the largest we were able to find
 
 function Structure_of_Sliding_Window(K, array) {
-  let maxSum = -Infinity; // other examples result = [], maxSum = -infinity, minimumLength = -infinity, smallestNum = infinity etc...
+  let maxSum = -Infinity; // other examples:  result = [], maxSum = -infinity, minimumLength = infinity, smallestNum = infinity etc...
   let windowSum = 0; //used to calculate the sum or used as a way to keep track of current subarray
   let windowStart = 0; //the first index of the subarray
 
